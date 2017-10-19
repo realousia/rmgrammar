@@ -1,0 +1,35 @@
+{% extends "rmcheck/layout_gnb.html" %}
+{% block title %}
+라면그래머라면
+{% endblock %}
+{% block content %}
+<div class="contents_index"></div>
+
+	<h1>라면이라면</h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td><b>회사</b></td>
+				<td><b>이름</b></td>
+				<td><b>종류</b></td>
+				<td><b>용량</b></td>
+				<td><b>칼로리</b></td>
+			</tr>
+		</thead>
+		<tbody>
+		    {% load el_pagination_tags %}
+
+				{% paginate ramyeons %}
+				{% for r in ramyeons %}
+				<tr>
+					<td><b>{{ r.company }}</b></td>
+					<td><b>{{ r.name }}</b></td>
+					<td><b>{{ r.sort }}</b></td>
+					<td><b>{{ r.size }}</b></td>
+					<td><b>{{ r.calories }}</b></td>
+				</tr>
+				{% endfor %}
+				{% show_pages %}
+		</tbody>
+
+{% endblock %}

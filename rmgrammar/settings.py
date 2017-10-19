@@ -27,17 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Application definition
 
 INSTALLED_APPS = [
+    'rmcheck',
+    'el_pagination',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rmcheck',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -101,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -120,3 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/'

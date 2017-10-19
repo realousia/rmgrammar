@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<title>{% block title %}{% endblock %}</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel ="shortcut icon" type = "image/png" href="{% static 'rmcheck/rm.png' %}"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'rmcheck/style.css' %}">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+	<header class="navbar navbar-inverse fixed-top">
+  <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="rmgrammar">
+   	<img class="logo" src="{% static 'rmcheck/rmlogo.png' %}">
+  </a>
+
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <a class="nav-link " href="/about/");">어바웃</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/grammar/">그래머</a>
+      </li>
+      {% if user.is_active %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'login' %}">{{user.username}}</a>
+      </li>
+      <li>
+        <a class="nav-link" href="{%url 'logout' %}">로그아웃</a>
+      </li>
+
+      {% else %}
+      <li class="nav-item"> 
+        <a class="nav-link active" href="{%url 'login' %}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">로그인</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  </header>
+  <div class="content-wrapper">
+    {% block content %}
+    {% endblock %}
+  </div>
+</div>
+</body>

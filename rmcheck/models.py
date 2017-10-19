@@ -4,6 +4,6 @@ from django.db import models
 class Ramyeon(models.Model):
 	name = models.CharField(max_length=64)
 	company = models.CharField(max_length=64)
-	sort = models.IntegerField(default=1)
+	sort = models.CharField(max_length=10)
 	size = models.IntegerField(default=0)
 	calories = models.IntegerField(default=0)

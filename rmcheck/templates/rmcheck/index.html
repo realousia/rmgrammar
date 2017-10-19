@@ -1,0 +1,28 @@
+{% extends "rmcheck/layout_gnb.html" %}
+{% block title %}
+라면그래머라면
+{% endblock %}
+{% block content %}
+<div class="contents_index"></div>
+{% if messages %}
+<div class="warning-box">
+	<ul class="messages">
+	{% for message in messages %}
+	  <li class="{{ message.tags }}">{{ message }}</li>
+	{% endfor %}
+	</ul>
+</div>	
+{% endif %}
+	<div class="block_1">
+			<p id="title">오늘의 <span style="font-weight: 400;">라면이라면</span></p>
+	</div>
+	<div class="block_2">
+
+	</div>
+	<div class="block_1">
+
+	</div>
+	<div class="block_2">
+
+	</div>
+{% endblock %}
